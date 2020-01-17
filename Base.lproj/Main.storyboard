@@ -19,16 +19,13 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dogcell" rowHeight="221" id="bCG-v7-Fg5" customClass="DogCell" customModule="webProcessPresent" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="221" id="bCG-v7-Fg5" customClass="DogTableViewCell" customModule="webProcessPresent" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="221"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" layoutMarginsFollowReadableWidth="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bCG-v7-Fg5" id="k18-YK-9Bj">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-cT-KWu">
-                                                    <rect key="frame" x="73" y="11" width="321" height="199"/>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RmW-wb-kjy">
                                                     <rect key="frame" x="20" y="73" width="45" height="75"/>
                                                     <constraints>
@@ -38,20 +35,32 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="breedLabel" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jA1-36-DFs">
+                                                    <rect key="frame" x="98" y="39" width="87" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YwW-cT-KWu">
+                                                    <rect key="frame" x="193" y="11" width="201" height="199"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="RmW-wb-kjy" firstAttribute="centerY" secondItem="k18-YK-9Bj" secondAttribute="centerY" id="3eg-yF-bDy"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="YwW-cT-KWu" secondAttribute="bottom" id="4zu-15-brq"/>
-                                                <constraint firstItem="YwW-cT-KWu" firstAttribute="leading" secondItem="RmW-wb-kjy" secondAttribute="trailing" constant="8" id="E20-zv-bFj"/>
+                                                <constraint firstItem="jA1-36-DFs" firstAttribute="leading" secondItem="k18-YK-9Bj" secondAttribute="leadingMargin" constant="78" id="9R3-2v-chS"/>
+                                                <constraint firstItem="YwW-cT-KWu" firstAttribute="leading" secondItem="jA1-36-DFs" secondAttribute="trailing" constant="8" id="F0J-YO-gtN"/>
                                                 <constraint firstItem="RmW-wb-kjy" firstAttribute="top" secondItem="k18-YK-9Bj" secondAttribute="topMargin" constant="62" id="nTl-fV-VyI"/>
                                                 <constraint firstItem="RmW-wb-kjy" firstAttribute="leading" secondItem="k18-YK-9Bj" secondAttribute="leadingMargin" id="owZ-R9-LJ0"/>
                                                 <constraint firstItem="YwW-cT-KWu" firstAttribute="top" secondItem="k18-YK-9Bj" secondAttribute="topMargin" id="s0c-6d-9Sj"/>
                                                 <constraint firstAttribute="trailing" secondItem="YwW-cT-KWu" secondAttribute="trailing" constant="20" id="toG-Wq-Ric"/>
+                                                <constraint firstItem="jA1-36-DFs" firstAttribute="top" secondItem="k18-YK-9Bj" secondAttribute="topMargin" constant="28" id="umw-X4-aNw"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="dogImage" destination="YwW-cT-KWu" id="bD8-TZ-oeS"/>
-                                            <outlet property="rankLabel" destination="RmW-wb-kjy" id="sfl-6B-OE4"/>
+                                            <outlet property="breedLabel" destination="jA1-36-DFs" id="cST-je-xGR"/>
+                                            <outlet property="dogImage" destination="YwW-cT-KWu" id="SH3-ll-nAB"/>
+                                            <outlet property="rankLabel" destination="RmW-wb-kjy" id="GOH-HP-6jh"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

@@ -32,10 +32,12 @@ extension ViewController {
                         /// once data is received & serialized, return with url
                         let dogURLDic = try decoder.decode(RandomDog.self, from: data)
                         let newDog = dogURLDic.message
-                        DispatchQueue.main.async {
-                            self.urlList.append(newDog)
-                            print(self.urlList)
-                        }
+                        self.urlList.append(newDog)
+                        let urlPart = newDog.components(separatedBy: "/")
+                        let breed: String = urlPart[4]
+                        self.breedList.append(breed)
+//                            print(self.urlList)
+//                            print(self.breedList)
                     } catch let error {
                         print("Parsing Failed \(error.localizedDescription)")
                     }
@@ -82,5 +84,8 @@ extension ViewController {
         DispatchQueue.main.async {
             self.loadView()
         }
+        print(self.urlList)
+        print(self.breedList)
+
     }
 }

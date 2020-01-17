@@ -15,16 +15,12 @@
 
 import UIKit
 
-class DogCell: UITableViewCell {
-    @IBOutlet weak var rankLabel: UILabel!
-    @IBOutlet weak var dogImage: UIImageView!
-}
-
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let session = URLSession(configuration: .default)
     let packSize = 2
     var urlList: [String] = []
+    var breedList: [String] = []
     var imageArray: [UIImage] = []
 
 // MARK: - Lifecycle
@@ -40,12 +36,12 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         return packSize
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "dogCell")
-        if imageArray.count > 0 {
-            cell.imageView?.image = imageArray[indexPath.row]
-        }
-
-        cell.textLabel?.text = String(indexPath.row + 1)
+        guard let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell") as? DogTableViewCell else {print("bad cell @@@@@@@@@")
+            return UITableViewCell()}
+//        if imageArray.count > 0 {
+        cell.dogImage?.image = imageArray[indexPath.row]
+        cell.breedLabel.text = breedList[indexPath.row]
+        cell.rankLabel.text = String(indexPath.row + 1)
         
         
         return (cell)
