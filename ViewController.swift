@@ -18,14 +18,19 @@ import UIKit
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     let session = URLSession(configuration: .default)
-    let packSize = 2
+    let packSize = 7
     var urlList: [String] = []
     var breedList: [String] = []
     var imageArray: [UIImage] = []
+    let tableView : UITableView = UITableView()
+    let reuseIdentifier = "custom"
 
 // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.register(DogTableViewCell.self, forCellReuseIdentifier: reuseIdentifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 300
         getRandomDogs(packSize: packSize)
     }
 
@@ -33,16 +38,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
 // MARK: - tableview data source
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return packSize
+        return imageArray.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell") as? DogTableViewCell else {print("bad cell @@@@@@@@@")
+        guard let cell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? DogTableViewCell else {print("bad cell @@@@@@@@@")
             return UITableViewCell()}
-//        if imageArray.count > 0 {
-        cell.dogImage?.image = imageArray[indexPath.row]
-        cell.breedLabel.text = breedList[indexPath.row]
-        cell.rankLabel.text = String(indexPath.row + 1)
-        
+
+        cell.mainImage = imageArray[indexPath.row]
+        cell.message = breedList[indexPath.row]
+        cell.layoutSubviews()
         
         return (cell)
     }

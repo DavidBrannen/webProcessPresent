@@ -56,7 +56,6 @@ extension ViewController {
         //create a list of dog images urls
         for url in urlList {
             let requestForAImage = url
-            print("find this: \(requestForAImage)")
             guard let url = URL(string: requestForAImage) else {return}
             
             group.enter()
@@ -84,8 +83,5 @@ extension ViewController {
         DispatchQueue.main.async {
             self.loadView()
         }
-        print(self.urlList)
-        print(self.breedList)
-
     }
 }
