@@ -21,9 +21,9 @@ extension ViewController {
             group.enter()
             let dataTask = session.dataTask(with: url) {
                 (data, response, error) in
-                if error != nil { print(error!); return}
+                if error != nil { print("Error1 \(error!)"); return}
                 guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                    print(response!)
+                    print("Random Response: \(response!)")
                     return
                 }
                 if let data = data {
@@ -33,11 +33,6 @@ extension ViewController {
                         let dogURLDic = try decoder.decode(RandomDog.self, from: data)
                         let newDog = dogURLDic.message
                         self.urlList.append(newDog)
-                        let urlPart = newDog.components(separatedBy: "/")
-                        let breed: String = urlPart[4]
-                        self.breedList.append(breed)
-//                            print(self.urlList)
-//                            print(self.breedList)
                     } catch let error {
                         print("Parsing Failed \(error.localizedDescription)")
                     }
@@ -50,25 +45,29 @@ extension ViewController {
             self.getImages()
         }
     }
+    //create image breed list
     func getImages() {
         let group = DispatchGroup()
         imageArray = []
         //create a list of dog images urls
-        for url in urlList {
-            let requestForAImage = url
+        for urlString in urlList {
+            let requestForAImage = urlString
             guard let url = URL(string: requestForAImage) else {return}
-            
+            let urlPart = urlString.components(separatedBy: "/")
+            let breed: String = urlPart[4]
+
             group.enter()
             let dataTask = session.dataTask(with: url) {
                 (data, response, error) in
-                if error != nil { print(error!); return}
+                if error != nil { print("Error2 \(error!)"); return}
                 guard let httpResponse = response as? HTTPURLResponse, (200...299).contains(httpResponse.statusCode) else {
-                    print(response!)
+                    print("Get image Response: \(response!)")
                     return
                 }
                 if let data = data {
                     let newDogImage = UIImage(data: data)
-                    self.imageArray.append(newDogImage!)
+                    let dogData = Dog.init(mainImage: newDogImage!, message: breed)
+                    self.imageArray.append(dogData)
                 }
                 group.leave()
             }

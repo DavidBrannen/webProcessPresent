@@ -20,8 +20,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     let session = URLSession(configuration: .default)
     let packSize = 7
     var urlList: [String] = []
-    var breedList: [String] = []
-    var imageArray: [UIImage] = []
+    var imageArray: [Dog] = []
     let tableView : UITableView = UITableView()
     let reuseIdentifier = "custom"
 
@@ -44,8 +43,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         guard let cell = self.tableView.dequeueReusableCell(withIdentifier: reuseIdentifier) as? DogTableViewCell else {print("bad cell @@@@@@@@@")
             return UITableViewCell()}
 
-        cell.mainImage = imageArray[indexPath.row]
-        cell.message = breedList[indexPath.row]
+        cell.mainImage = imageArray[indexPath.row].mainImage
+        cell.message = imageArray[indexPath.row].message
         cell.layoutSubviews()
         
         return (cell)

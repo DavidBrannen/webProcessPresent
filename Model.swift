@@ -7,7 +7,13 @@
 //
 
 import Foundation
+import UIKit
 
 struct RandomDog : Codable {
+    let message : String
+}
+
+struct Dog {
+    let mainImage: UIImage
     let message : String
 }

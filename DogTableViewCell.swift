@@ -24,6 +24,7 @@ class DogTableViewCell: UITableViewCell {
     let mainImageView : UIImageView = {
         var imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.contentMode = .scaleAspectFit
         return imageView
     }()
 
