@@ -49,7 +49,7 @@ extension ViewController {
     func getImages() {
         let group = DispatchGroup()
         imageArray = []
-        //create a list of dog images urls
+        //create a list of dog images with breed names
         for urlString in urlList {
             let requestForAImage = urlString
             guard let url = URL(string: requestForAImage) else {return}
