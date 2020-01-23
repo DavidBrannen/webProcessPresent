@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+let packSize = 7 //Choose a pack size
+
 struct RandomDog : Codable {
     let message : String
 }

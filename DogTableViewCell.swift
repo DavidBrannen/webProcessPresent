@@ -10,9 +10,6 @@ import UIKit
 
 class DogTableViewCell: UITableViewCell {
 
-//    var rankLabel: UILabel?
-//    var breedLabel: UILabel?
-//    var dogImage: UIImageView?
     var message : String?
     var mainImage : UIImage?
     
@@ -34,14 +31,14 @@ class DogTableViewCell: UITableViewCell {
         addSubview(mainImageView)
         
         mainImageView.leftAnchor.constraint(equalTo: leftAnchor).isActive = true
-        mainImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        mainImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        mainImageView.topAnchor.constraint(equalTo: topAnchor, constant: 3.0).isActive = true
+        mainImageView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: 3.0).isActive = true
         mainImageView.widthAnchor.constraint(equalToConstant: 250).isActive = true
         mainImageView.heightAnchor.constraint(equalToConstant: 200).isActive = true
 
-        messageView.leftAnchor.constraint(equalTo: self.mainImageView.rightAnchor).isActive = true
+        messageView.leftAnchor.constraint(equalTo: self.mainImageView.rightAnchor, constant: 4.0).isActive = true
         messageView.rightAnchor.constraint(equalTo: rightAnchor).isActive = true
-        messageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        messageView.topAnchor.constraint(equalTo: topAnchor, constant: 8.0).isActive = true
         messageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
 
     }

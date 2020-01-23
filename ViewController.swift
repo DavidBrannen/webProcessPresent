@@ -18,7 +18,6 @@ import UIKit
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    let packSize = 7 //Choose a pack size
     let session = URLSession(configuration: .default)
     var urlList: [String] = []
     var imageArray: [Dog] = []
